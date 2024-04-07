@@ -19,7 +19,7 @@ void table ( int *rocket_left_y,  int *rocket_right_y, int *ball_x, int *ball_y)
 // Функция обнуления координат мяча при пересечении координатой x мяча линии движения ракетки (гол)
 void score (int *ball_x, int *ball_y, int *rocket_left_y, int *rocket_right_y, int *vector_x, int *vector_y);
 // Функция очистки экрана
-void clear (void);
+void clear ();
 
 int main () {
     
@@ -36,10 +36,10 @@ int main () {
     // запускаем бесконечный цикл и вызываем все функции, каждой функции через псевдоним передаем переменные, которые такая функция будет изменять уже в проуессе своего выполнения и каждый при новом вызове у йункций будут актуальные значения переменных
     while (1) {
         table (&rocket_left_y, &rocket_right_y, &ball_x, &ball_y);
-        rocketMove(&rocket_left_y, &rocket_right_y);
-        ballMove(&ball_x, &ball_y, &vector_x, &vector_y, &rocket_left_y, &rocket_right_y);
-        score(&ball_x, &ball_y, &rocket_left_y, &rocket_right_y, &vector_x, &vector_y);
-        clear();
+        rocketMove (&rocket_left_y, &rocket_right_y);
+        ballMove (&ball_x, &ball_y, &vector_x, &vector_y, &rocket_left_y, &rocket_right_y);
+        score (&ball_x, &ball_y, &rocket_left_y, &rocket_right_y, &vector_x, &vector_y);
+        clear ();
     }
     
     return 0;
@@ -67,7 +67,7 @@ void table (int *rocket_left_y, int *rocket_right_y, int *ball_x, int *ball_y) {
                 printf("|");
             // отрисовываем мяч
             else if (x == *ball_x && y == *ball_y)
-                printf("o");
+                printf("*");
             // отрисовываем верхнюю и нижнюю границы поля
             else if ((y == 0 && x != 0 && x != WIDTH - 1) ||
                      (y == HEIGHT - 1 && x != 0 && x != WIDTH - 1))
@@ -122,6 +122,6 @@ void score (int *ball_x, int *ball_y, int *rocket_left_y, int *rocket_right_y, i
     }
 }
 
-void clear(void) {
+void clear() {
     printf("\033");
 }
