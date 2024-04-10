@@ -94,6 +94,8 @@ int main() {
             printf("\n");
         }
         free(value_array);
+        for (int i = 0; i < row; ++i)
+            free(pointer_array[i]);
         free(pointer_array);
     }
         
