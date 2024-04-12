@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 
+double ** AllocDoubleArray(int row, int col);
 void FreeDoubleArray(double **array, int row);
 void InputDoubleArray(double **array, int row, int col);
 void PrintDoubleArray(double **array, int row, int col);
@@ -12,22 +13,25 @@ int main () {
     
     scanf("%d %d", &row, &col);
     
-    double **array = (double **) malloc(row * sizeof(double *));
-    for (int i = 0; i < row; ++i)
-        array[i] = (double *) malloc (col * sizeof(double));
-    
    
-    
+    double ** array = AllocDoubleArray(row, col);
     InputDoubleArray(array, row, col);
     PrintDoubleArray(array, row, col);
     FreeDoubleArray(array, row);
     
     printf("\n");
     
-    
     return 0;
 }
 
+double ** AllocDoubleArray(int row, int col) {
+    
+    double **array = (double **) malloc(row * sizeof(double *));
+    for (int i = 0; i < row; ++i)
+        array[i] = (double *) malloc (col * sizeof(double));
+    
+    return array;
+}
 
 void FreeDoubleArray(double **array, int row) {
     
