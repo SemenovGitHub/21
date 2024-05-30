@@ -111,8 +111,11 @@ char nonprint_check(char c){
     if(c == '\n' || c == '\t'){
         return c;
     }
-    
-    if(c <= 31){
+    if(c < 0){
+        printf("M-");
+        c = c & 0x7F;
+    }
+    if(c > 0 && c <= 31){
         putchar('^');
         c = c + 64;
     }
